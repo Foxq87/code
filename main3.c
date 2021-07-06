@@ -1,12 +1,11 @@
 #include <stdio.h>
-
+#include <math.h>
 
 int main()
 {
     int a;
     char b,c,d,e,f,g,h,i;
     int wallet=0;
-    int ttl=0;
 
     str:
     printf("Welcome!\nif you want to order something please answer the questions below\n[1]-Hamburger Menu\n[2]-Pizza Menu\n[3]-A Menu\n[4]-B Menu\n");
@@ -16,51 +15,51 @@ int main()
     {
         case 1:
             printf("Hamburger Menu is 8$ do you want to continue? y/n ");
-            scanf("%c",&b);
+            scanf("%d",&b);
+
             
-            if(b=='y'||b=='Y')
-            {
-                wallet+=8;
-                hmb:
-
-                printf("Your order has been received! Would you like to continue ordering? y/n ");
-                scanf("%c",&f);
-
-                if(f=='y'||f=='Y')
+                if(b=='y')
                 {
+                    wallet+=8;
+                    hmb:
+
+                    printf("Your order has been received! Would you like to continue ordering? y/n ");
+                    scanf("%c",&f);
+
+                    if(f=='y')
+                    {
+                        goto str;
+                    }
+                    
+                    else if(f=='n')
+                    {
+                        goto end;
+                    }
+
+                    else
+                    {
+                        printf("please use valid statements\n");
+                       // goto hmb;
+                    }
+                }
+                    
+                else if(b=='n')
+                {
+                    printf("your order has been cancelled\n");
                     goto str;
                 }
+                    
 
-                else if(f=='n'||f=='N')
+                else
                 {
-                    goto end;
+                    printf("please use valid statements\n");
+                    //goto str;
                 }
-
-                else 
-                {
-                    printf("please use valid statements");
-                    goto hmb;
-                }
-                
-            }
-
-            else if(b=='n'||b=='N')
-            {
-                printf("your checkout has been cancelled");
-                goto str;
-            }
-
-            else
-            {
-                printf("please use valid statements");
-                goto str;
-            }
-
         break;
 
         case 2:
-            printf("Pizza Menu is 9$ do you want to continue? y/n");
-            scanf("%c",&c);
+            printf("Pizza Menu is 9$ do you want to continue? y/n \n");
+           /* scanf("%c",&c);
 
             if(c=='y'||c=='Y')
             {
@@ -99,11 +98,12 @@ int main()
                 printf("please use valid statements");
                 //
             }
-
+*/
         break;
 
         case 3:
-            printf("a Menu is 6$ do you want to continue? y/n");
+            printf("A Menu is 6$ do you want to continue? y/n \n");
+            /*
             scanf("%c",&d);
 
             if(d=='y'||d=='Y')
@@ -139,13 +139,13 @@ int main()
             else
             {
                 printf("please use valid statements");
-            }   
+            }   */
 
         break;
 
         case 4:
             printf("b Menu is 10$ do you want to continue? y/n");
-            scanf("%c",&e);
+           /* scanf("%c",&e);
 
             if(e=='y'||e=='Y')
                 {
@@ -164,18 +164,17 @@ int main()
             {
                 printf("please use valid statements");
             }
-
+*/   
         break;
 
         default:
             printf("Please use valid statements");
             goto str;
-
         break;
     }
     end:
     
-    printf("Your checkout is %d",wallet);
+    printf("Your orders cost %d $",wallet);
 
     rend:
     return 0;
